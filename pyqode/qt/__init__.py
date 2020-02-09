@@ -66,6 +66,7 @@ PYQT4_API = [
 ]
 #: names of the expected PySide api
 PYSIDE_API = ['pyside']
+PYSIDE2_API = ['pyside2']
 
 
 class PythonQtError(Exception):
@@ -144,6 +145,11 @@ if QT_API in os.environ:
             logging.getLogger(__name__).debug('importing PySide')
             import PySide
             os.environ[QT_API] = PYSIDE_API[0]
+            logging.getLogger(__name__).debug('imported PySide')
+        elif os.environ[QT_API].lower() in PYSIDE2_API:
+            logging.getLogger(__name__).debug('importing PySide2')
+            import PySide2
+            os.environ[QT_API] = PYSIDE2_API[0]
             logging.getLogger(__name__).debug('imported PySide')
     except ImportError:
         logging.getLogger(__name__).warning(

@@ -6,6 +6,7 @@ from pyqode.qt import QT_API
 from pyqode.qt import PYQT5_API
 from pyqode.qt import PYQT4_API
 from pyqode.qt import PYSIDE_API
+from pyqode.qt import PYSIDE2_API
 
 
 if os.environ[QT_API] in PYQT5_API:
@@ -31,3 +32,9 @@ elif os.environ[QT_API] in PYSIDE_API:
     # use a common __version__
     import PySide.QtCore
     __version__ = PySide.QtCore.__version__
+elif os.environ[QT_API] in PYSIDE2_API:
+    from PySide2.QtCore import *
+    ##from PySide2.QtGui import QSortFilterProxyModel
+    # use a common __version__
+    import PySide2.QtCore
+    __version__ = PySide2.QtCore.__version__
